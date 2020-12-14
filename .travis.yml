@@ -9,9 +9,13 @@ script:
   - docker run -e CI=true gaoey9/docker-react npm run test
 
 deploy:
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
   provider: elasticbeanstack
   region: "us-west-2"
   app: "docker"
   env: "Docker-env"
   bucket_name: "aws-s3"
   bucket_path: "docker-react"
+  on:
+    branch: master
